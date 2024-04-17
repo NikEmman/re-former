@@ -3,8 +3,12 @@ class UsersController < ApplicationController
         @user = User.new
     end
 
+    def index
+        @users = User.all
+    end
+
     def create
-       # @user = User.new(username: params[:username], email: params[:email], password: params[:password])
+        #@user = User.new(username: params[:username], email: params[:email], password: params[:password])
         @user = User.new(user_params)
         if @user.save
             redirect_to new_user_path
@@ -12,6 +16,21 @@ class UsersController < ApplicationController
             render :new, status: :unprocessable_entity
         end
      
+    end
+    
+    def edit
+       @user = User.find(params[:id])
+    end
+
+    def update
+        @user = User.find(params[:id])
+        respond_to do |format|
+            if @user.update(user_params)
+              format.html { redirect_to root_path, notice: 'User was successfully saved.' }
+            else
+              format.html { render :edit }
+            end
+          end
     end
 
     private

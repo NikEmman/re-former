@@ -50,18 +50,29 @@
 <!---->
 
 <h1>Add New User</h1>
-<%= form_with url:"/users", model: @user, method: :post do |form|%>
-  
-    <%= form.label :username, "Username: "%>
-    <%= form.text_field :username, value: "John Wick"%>
-    <br><br>
-    <%= form.label :email, "Email: "%>
-    <%= form.text_field :email , placeholder: "Example@email.com"%>
-    <br><br>
-    <%= form.label :password, "Password: "%>
-    <%= form.password_field :password%>
-    <br><br>
-    <%= form.submit "Create" %>
-<% end%>
+<%#= form_with url:"/users", model: @user, method: :post do |form|%>
+ <%# if @user.errors.any? %>
+<!--    <div style="color: red">
+      <h2><%#= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-
+      <ul>
+        <%# @user.errors.each do |error| %>-->
+<!--          <li><%#= error.full_message %></li>-->
+        <%# end %>
+<!--      </ul>
+    </div>
+  <%# end %>-->
+<!--  -->
+    <%#= form.label :username, "Username: "%>
+    <%#= form.text_field :username, value: "John Wick"%>
+<!--    <br><br>-->
+    <%#= form.label :email, "Email: "%>
+    <%#= form.text_field :email , placeholder: "Example@email.com"%>
+<!--    <br><br>-->
+    <%#= form.label :password, "Password: "%>
+    <%#= form.password_field :password%>
+<!--    <br><br>-->
+    <%#= form.submit "Create" %>
+<!---->
+<%# end%>
+<%=render "form"%>
