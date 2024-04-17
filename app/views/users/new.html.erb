@@ -30,20 +30,38 @@
     <%#= submit_tag 'Submit' %>
 <%#end%>
 
-<h1>Add New User</h1>
+<!--<h1>Add New User</h1>
 
-<%= form_tag('/users', method: :post) do %>
-  <fieldset>
+<%#= form_tag('/users', method: :post) do %>-->
+<!--  <fieldset>
     <legend>New User:</legend>
-    <%= label_tag(:user_username,"Username: ")%>
-    <%= text_field_tag 'user[username]' %>
+    <%#= label_tag(:user_username,"Username: ")%>-->
+    <%#= text_field_tag 'user[username]' %>
+<!--    <br><br>-->
+    <%#= label_tag(:user_email,"Email: ")%>
+    <%#= text_field_tag 'user[email]' %>
+<!--    <br><br>-->
+    <%#= label_tag(:user_password,"Password: ")%>
+    <%#= password_field_tag 'user[password]' %>
+<!--    <br><br>-->
+    <%#= submit_tag 'Submit' %>
+<!--  </fieldset>-->
+<%# end %>
+<!---->
+
+<h1>Add New User</h1>
+<%= form_with url:"/users", model: @user, method: :post do |form|%>
+  
+    <%= form.label :username, "Username: "%>
+    <%= form.text_field :username, value: "John Wick"%>
     <br><br>
-    <%= label_tag(:user_email,"Username: ")%>
-    <%= text_field_tag 'user[email]' %>
+    <%= form.label :email, "Email: "%>
+    <%= form.text_field :email , placeholder: "Example@email.com"%>
     <br><br>
-    <%= label_tag(:user_password,"Username: ")%>
-    <%= password_field_tag 'user[password]' %>
+    <%= form.label :password, "Password: "%>
+    <%= form.password_field :password%>
     <br><br>
-    <%= submit_tag 'Submit' %>
-  </fieldset>
-<% end %>
+    <%= form.submit "Create" %>
+<% end%>
+
+
