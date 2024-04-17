@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         #@user = User.new(username: params[:username], email: params[:email], password: params[:password])
         @user = User.new(user_params)
         if @user.save
-            redirect_to new_user_path
+            redirect_to new_user_path, notice: 'User was successfully saved.'
         else
             render :new, status: :unprocessable_entity
         end
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
             if @user.update(user_params)
               format.html { redirect_to root_path, notice: 'User was successfully saved.' }
             else
-              format.html { render :edit }
+              format.html { render :edit, status: :unprocessable_entity}
             end
           end
     end
